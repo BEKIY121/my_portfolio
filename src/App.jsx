@@ -1,62 +1,70 @@
-import Card from './components/Card';
-import Counter from './components/Counter';
-import Student from './Student.jsx';
-import Aurora from './components/Aurora';
-import ProfileCard from './TiltedCard';
-              import Dock from './components/Dock';
-// import { VscHome, VscArchive, VscAccount, VscSettingsGear } from 'react-icons/vsc';
-  
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import Aurora from './components/Aurora';
+import Dock from './components/Dock';
+
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ProjectsPage from './pages/ProjectsPage';
+import ResumePage from './pages/ResumePage';
+import ContactPage from './pages/ContactPage';
+
+import { VscHome, VscAccount, VscCheck, VscAttach, VscHistory } from 'react-icons/vsc';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
-  const items = [
-                { label: 'Home', onClick: () => alert('Home!') },
-                { label: 'Archive', onClick: () => alert('Archive!') },
-                { label: 'Profile', onClick: () => alert('Profile!') },
-                { label: 'Settings', onClick: () => alert('Settings!') },
-              ];
+  return (
+    <BrowserRouter>
+      <MainLayout />
+    </BrowserRouter>
+  );
+}
 
+function MainLayout() {
+  const navigate = useNavigate();
+
+  const items = [
+    { label: 'Home', icon: <VscHome />, onClick: () => navigate('/') },
+    { label: 'About', icon: <VscAccount />, onClick: () => navigate('/about') },
+    { label: 'Projects', icon: <VscCheck />, onClick: () => navigate('/projects') },
+    { label: 'Resume', icon: <VscAttach />, onClick: () => navigate('/resume') },
+    { label: 'Contact', icon: <VscHistory />, onClick: () => navigate('/contact') },
+  ];
 
   return (
-    <div className="App" style={{ height: '60vh', width: '100vw', overflow: 'hidden' }}>
-      {/* <Student /> */}
-
+    <div style={{ height: '100vh', width: '100vw', overflow: 'hidden', backgroundColor: '#000' }}>
       <Aurora
         colorStops={["#5227ff", "#7cff67", "#5227ff"]}
         blend={10.5}
         amplitude={0.5}
-        speed={0.5}>
-        </Aurora>
-      <div className="content" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-        <div style={{ display: 'flex',alignItems: 'center', justifyContent: 'center' }}>   
+        speed={0.5}
+      />
 
-              <ProfileCard
-                name="BEki Kusha"
-                title="Software Engineer"
-                handle="bekikusha"
-                status="Online"
-                contactText="Contact Me"
-                avatarUrl="/src/assets/enka.png"
-                miniAvatarUrl={"/src/assets/enka.png"}
-                showUserInfo={true}
-                enableTilt={true}
-                onContactClick={() => console.log('Contact clicked')}
-              />
-
-              <Dock 
-                items={items}
-                panelHeight={88}
-                baseItemSize={60}
-                magnification={100}
-              />
-
-        </div>``
-      
-
-        </div>
-
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0,
+        width: '100%', height: '100%',
+        overflowY: 'auto',
+        paddingBottom: '100px',
+      }}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/resume" element={<ResumePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
       </div>
 
+      <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
+        <Dock 
+          items={items}
+          panelHeight={88}
+          baseItemSize={60}
+          magnification={80}
+        />
+      </div>
+    </div>
   );
 }
 
