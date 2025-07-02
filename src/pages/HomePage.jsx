@@ -77,14 +77,14 @@ export default function HomePage() {
             handle="bekikusha"
             status="Online"
             contactText="Contact Me"
-            avatarUrl="/src/assets/enka.png"
-            miniAvatarUrl="/src/assets/enka.png"
+            avatarUrl="src/assets/enka.png"
+            miniAvatarUrl="src/assets/enka.png"
             showUserInfo={true}
             enableTilt={true}
             onContactClick={() => console.log('Contact clicked')}
           />
         </div>
-        
+
         {/* Text Intro */}
         <div style={{ flex: '1 1 320px', minWidth: 280 }}>
           <h1 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: 20, color: '#7cff67' }}>

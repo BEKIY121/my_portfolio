@@ -24,11 +24,11 @@ function MainLayout() {
   const navigate = useNavigate();
 
   const items = [
-    { label: 'Home', icon: <VscHome />, onClick: () => navigate('/') },
-    { label: 'About', icon: <VscAccount />, onClick: () => navigate('/about') },
-    { label: 'Projects', icon: <VscCheck />, onClick: () => navigate('/projects') },
-    { label: 'Resume', icon: <VscAttach />, onClick: () => navigate('/resume') },
-    { label: 'Contact', icon: <VscHistory />, onClick: () => navigate('/contact') },
+    { label: 'Home', icon: <VscHome />, onClick: () => navigate('/my_portfolio/') },
+    { label: 'About', icon: <VscAccount />, onClick: () => navigate('/my_portfolio/about') },
+    { label: 'Projects', icon: <VscCheck />, onClick: () => navigate('/my_portfolio/projects') },
+    { label: 'Resume', icon: <VscAttach />, onClick: () => navigate('/my_portfolio/resume') },
+    { label: 'Contact', icon: <VscHistory />, onClick: () => navigate('/my_portfolio/contact') },
   ];
 
   return (
@@ -48,11 +48,11 @@ function MainLayout() {
         paddingBottom: '100px',
       }}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/resume" element={<ResumePage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/my_portfolio/" element={<HomePage />} />
+          <Route path="/my_portfolio/about" element={<AboutPage />} />
+          <Route path="/my_portfolio/projects" element={<ProjectsPage />} />
+          <Route path="/my_portfolio/resume" element={<ResumePage />} />
+          <Route path="/my_portfolio/contact" element={<ContactPage />} />
         </Routes>
       </div>
 
